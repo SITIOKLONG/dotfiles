@@ -32,6 +32,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 set -g @plugin 'tmux-plugins/tpm'
 run '~/.tmux/plugins/tpm/tpm'
 
+conda init
 conda deactivate
 
 pip3 install --user ranger-fm

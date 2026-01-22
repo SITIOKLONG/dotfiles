@@ -4,8 +4,8 @@ set -e
 
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-echo 'export PATH="$HOME/.local/kitty.app/bin:$PATH"' >>~/.zshrc
-source ~/.zshrc
+echo 'export PATH="$HOME/.local/kitty.app/bin:$PATH"' >>~/.bashrc
+source ~/.bashrc
 
 sudo apt install -y git tmux fzf wget curl build-essential
 
@@ -19,7 +19,9 @@ LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/re
 curl -Lo lazygit.tar.gz "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
 tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
+echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin"' >>~/.bashrc
 
+conda init
 conda deactivate
 pip3 install --user ranger-fm
 
