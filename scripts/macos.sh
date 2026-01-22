@@ -27,6 +27,13 @@ fi
 
 brew install neovim git tmux lazygit fzf wget
 
+# tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+set -g @plugin 'tmux-plugins/tpm'
+run '~/.tmux/plugins/tpm/tpm'
+
+conda deactivate
+
 pip3 install --user ranger-fm
 
 FONT_DIR="$HOEM/Library/Fonts"
@@ -44,3 +51,13 @@ fi
 NVIM_CONFIG="$HOME/.config/nvim"
 
 git clone https://github.com/LazyVim/starter.git "$NVIM_CONFIG"
+
+
+DOTFILES="$HOME/dotfiles"
+cd "$DOTFILES"
+
+mkdir -p "$HOME/.config"
+ln -sf "$DOTFILES/.zshrc" "$HOME/.zshrc"
+ln -sf "$DOTFILES/tmux/tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$DOTFILES/iterm2" "$HOME/.config/iterm2"
+ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
