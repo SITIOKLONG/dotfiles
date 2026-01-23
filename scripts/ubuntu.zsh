@@ -32,7 +32,6 @@ DOTFILES="$HOME/dotfiles"
 cd "$DOTFILES"
 
 mkdir -p "$HOME/.config"
-ln -sf "$DOTFILES/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 ln -sf "$DOTFILES/kitty" "$HOME/.config/kitty"
