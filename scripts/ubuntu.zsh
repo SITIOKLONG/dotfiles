@@ -2,6 +2,7 @@
 
 set -e
 
+DOTFILES="$HOME/.dotfiles"
 # kitty
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 echo 'export PATH="$HOME/.local/kitty.app/bin:$PATH"' >>~/.zshrc
@@ -21,14 +22,15 @@ tar xf lazygit.tar.gz lazygit
 sudo install lazygit -D -t /usr/local/bin/
 echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin"' >>~/.zshrc
 
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash ./Miniconda3-latest-Linux-x86_64.sh
+~/miniconda3/bin/conda init zsh
 conda init
 conda deactivate
 pip3 install --user ranger-fm
 
-echo 'export PATH="$HOME/.local/bin:$PATH"' >>~/.zshrc
 source ~/.zshrc
 
-DOTFILES="$HOME/dotfiles"
 cd "$DOTFILES"
 
 mkdir -p "$HOME/.config"

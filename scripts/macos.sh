@@ -54,10 +54,11 @@ NVIM_CONFIG="$HOME/.config/nvim"
 git clone https://github.com/LazyVim/starter.git "$NVIM_CONFIG"
 
 
-DOTFILES="$HOME/dotfiles"
+DOTFILES="$HOME/.dotfiles"
 cd "$DOTFILES"
 
 mkdir -p "$HOME/.config"
 ln -sf "$DOTFILES/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 ln -sf "$DOTFILES/kitty" "$HOME/.config/kitty"
+ln -sf "$DOTFILES/ranger" "$HOME/.config/ranger"
