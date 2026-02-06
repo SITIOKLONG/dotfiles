@@ -148,7 +148,13 @@ return {
       vim.list_extend(opts.ensure_installed, {
         "tsx",
         "typescript",
+        "python",
       })
+    end,
+    config = function(_, opts)
+      require("nvim-treesitter.install").prefer_git = true
+      require("nvim-treesitter.install").compilers = { "gcc" }
+      require("nvim-treesitter.configs").setup(opts)
     end,
   },
 
