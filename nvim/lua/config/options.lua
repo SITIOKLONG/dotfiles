@@ -3,3 +3,5 @@
 -- Add any additional options here
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.g.lazyvim_python_lsp = "pyright"
