@@ -14,6 +14,9 @@ vim.g.neovide_hide_mouse_when_typing = true
 vim.g.neovide_opacity = 0.8
 vim.o.guifont = "Fira Code:h10"
 
+vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_ruff = false
+
 local opt = vim.opt
 
 opt.spell = false
