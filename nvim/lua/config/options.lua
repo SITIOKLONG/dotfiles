@@ -12,7 +12,7 @@ vim.g.neovide_floating_shadow = false
 vim.g.neovide_input_ime = true
 vim.g.neovide_hide_mouse_when_typing = true
 vim.g.neovide_opacity = 0.8
-vim.o.guifont = "Fira Code:h10"
+vim.o.guifont = "Fira Code:h12"
 
 vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = false
