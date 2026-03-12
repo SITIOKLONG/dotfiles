@@ -11,15 +11,14 @@ vim.g.autoformat = false
 vim.g.neovide_floating_shadow = false
 vim.g.neovide_input_ime = true
 vim.g.neovide_hide_mouse_when_typing = true
-vim.g.neovide_opacity = 0.1
+vim.g.neovide_opacity = 0.4
 vim.g.neovide_normal_opacity = 1.0
 vim.g.neovide_show_border = false
 vim.o.guifont = "Fira Code:h12"
 vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_blur_amount_x = 16.0
 vim.g.neovide_floating_blur_amount_y = 16.0
-vim.g.neovide_floating_blur = 0
-vim.g.neoide_theme = "bg_color"
+vim.g.neovide_floating_blur = 1
 
 vim.g.neovide_floating_shadow = true
 vim.g.neovide_floating_z_height = 10
@@ -28,6 +27,7 @@ vim.g.neovide_light_radius = 5
 
 vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = false
+vim.g.neovide_theme = "light"
 
 local opt = vim.opt
 
