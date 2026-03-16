@@ -27,7 +27,7 @@ vim.g.neovide_light_radius = 5
 
 vim.g.lazyvim_python_lsp = "basedpyright"
 vim.g.lazyvim_python_ruff = false
-vim.g.neovide_theme = "light"
+vim.g.neovide_theme = "dark"
 
 local opt = vim.opt
 
