@@ -4,7 +4,6 @@
 
 vim.opt.clipboard = "unnamedplus"
 vim.cmd("let g:netrw_liststyle = 3")
-vim.cmd('colorscheme catppuccin-mocha')
 
 vim.g.autoformat = false
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
