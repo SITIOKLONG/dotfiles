@@ -9,7 +9,7 @@ return {
           root_dir = function(fname)
             local util = require("lspconfig.util")
             return util.root_pattern("pyrightconfig.json", "pyproject.toml", ".git")(fname) 
-                   or util.path.dirname(fname)
+                   or util.fs.dirname(fname)
           end,
           settings = {
             basedpyright = {
@@ -27,7 +27,7 @@ return {
               plugins = {
                 pycodestyle = {
                   enabled = true,
-                  maxLineLength = 120,
+                  maxLineLength = 220,
                   ignore = { 'E501', 'E231' },
                 },
                 -- 建議關閉其餘重複功能，只留 pycodestyle
@@ -37,8 +37,35 @@ return {
             },
           },
         },
-        dartls = {},
+        matlab_ls = {
+          cmd = { "matlab-language-server", "--stdio" },
+          filetypes = { "matlab" },
+          root_dir = require("lspconfig.util").root_pattern(".git", "*.prj", "*.prj2"),
+          on_attach = function(client, bufnr)
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "MATLAB Help", remap = true})
+          end,
+          settings = {
+            matlab = {
+              indexWorkspace = true,  -- Start minimal, enable later
+              matlabConnectionTiming = "onStart",
+              prewarmGraphics = false,
+              telemetry = false,
+              installPath = "/Applications/MATLAB_R2025b.app",
+            },
+          },
+          init_timeout = 180000,
+        },
+        -- dartls = {},
       },
     },
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      if type(opts.ensure_installed) == "table" then
+        vim.list_extend(opts.ensure_installed, { "matlab" })
+      end
+    end,
   },
 }
