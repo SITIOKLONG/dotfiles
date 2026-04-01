@@ -1,7 +1,7 @@
 # How to use
 
 ```bash
-git clone git@github.com:SITIOKLONG/dotfiles.git ~/.dotfiles
+git clone https://github.com/SITIOKLONG/dotfiles.git ~/.dotfiles
 ```
 # SSH play video
 
