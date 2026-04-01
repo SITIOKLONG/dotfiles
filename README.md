@@ -1,9 +1,8 @@
-# Usage
+# How to use
 
 ```bash
-git clone git@github.com:SITIOKLONG/dotfiles.git
+git clone git@github.com:SITIOKLONG/dotfiles.git ~/.dotfiles
 ```
-
 # SSH play video
 
 ```bash
