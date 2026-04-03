@@ -83,20 +83,39 @@ else
     true
 fi
 
-# 6. Miniconda
+# 6. Miniconda (Fixed for x86_64 + ARM64)
 print_step "Installing Miniconda..."
+
 if [[ ! -d "$HOME/miniconda3" ]]; then
+    ARCH=$(uname -m)
+    
     if [[ "$(uname)" == "Darwin" ]]; then
-        # macOS
-        curl -LO "https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-$(uname -m).sh"
+        # macOS (Intel or Apple Silicon)
+        CONDA_FILE="Miniconda3-latest-MacOSX-${ARCH}.sh"
     else
         # Linux
-        curl -LO https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        if [[ "$ARCH" == "x86_64" ]]; then
+            CONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+        elif [[ "$ARCH" == "aarch64" || "$ARCH" == "arm64" ]]; then
+            CONDA_FILE="Miniconda3-latest-Linux-aarch64.sh"
+        else
+            echo "Unsupported architecture: $ARCH"
+            exit 1
+        fi
     fi
-    bash Miniconda3-latest-*.sh -b -p "$HOME/miniconda3"
-    rm Miniconda3-latest-*.sh
+
+    print_step "Downloading ${CONDA_FILE}..."
+    wget "https://repo.anaconda.com/miniconda/${CONDA_FILE}" -O miniconda.sh
+
+    print_step "Installing Miniconda..."
+    bash miniconda.sh -b -p "$HOME/miniconda3"
+    rm miniconda.sh
+else
+    print_step "Miniconda already installed"
 fi
 
+# Initialize conda
+print_step "Initializing conda for zsh..."
 "$HOME/miniconda3/bin/conda" init zsh
 
 # 7. Ranger
