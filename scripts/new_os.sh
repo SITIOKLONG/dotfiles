@@ -46,24 +46,31 @@ fi
 print_step "Installing Kitty terminal..."
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
-# Add Kitty to PATH safely
 cat << 'EOF' >> ~/.zshrc
 
 # Kitty Terminal
 export PATH="$HOME/.local/kitty.app/bin:$PATH"
 EOF
 
-# 5. Neovim
-print_step "Installing Neovim..."
+# 5. Neovim as AppImage (works on x86_64 and ARM64)
+print_step "Installing Neovim (AppImage)..."
 if [[ "$(uname)" == "Linux" ]]; then
     ARCH=$(uname -m)
     [[ "$ARCH" == "aarch64" ]] && ARCH="arm64"
-    curl -LO "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-${ARCH}.tar.gz"
-    sudo rm -rf /opt/nvim
-    sudo tar -C /opt -xzf "nvim-linux-${ARCH}.tar.gz"
-    sudo ln -sf "/opt/nvim-linux-${ARCH}/bin/nvim" /usr/local/bin/nvim
-    rm "nvim-linux-${ARCH}.tar.gz"
+
+    APPIMAGE="nvim-linux-${ARCH}.appimage"
+
+    print_step "Downloading Neovim AppImage for ${ARCH}..."
+    curl -LO "https://github.com/neovim/neovim/releases/latest/download/${APPIMAGE}"
+
+    # Make executable and move to standard location
+    chmod u+x "${APPIMAGE}"
+    sudo rm -f /usr/local/bin/nvim
+    sudo mv "${APPIMAGE}" /usr/local/bin/nvim
+
+    print_step "Neovim AppImage installed as /usr/local/bin/nvim"
 else
+    # macOS - use Homebrew
     brew install neovim
 fi
 
@@ -79,7 +86,7 @@ if [[ "$(uname)" == "Linux" ]]; then
     rm -f lazygit.tar.gz lazygit
 fi
 
-# 7. Miniconda (architecture aware)
+# 7. Miniconda
 print_step "Installing Miniconda..."
 if [[ ! -d "$HOME/miniconda3" ]]; then
     ARCH=$(uname -m)
@@ -98,8 +105,6 @@ if [[ ! -d "$HOME/miniconda3" ]]; then
     rm miniconda.sh
 fi
 
-# Initialize conda
-print_step "Initializing conda..."
 "$HOME/miniconda3/bin/conda" init zsh
 
 # 8. Ranger with pip fix
@@ -113,7 +118,7 @@ print_step "Installation completed successfully!"
 # Final instructions
 echo -e "\n${YELLOW}=== Next Steps ===${NC}"
 cat << EOF
-1. Create symlinks (recommended to do manually):
+1. Create symlinks:
 
    cd "$DOTFILES"
    ln -sf "\$DOTFILES/tmux/.tmux.conf" "\$HOME/.tmux.conf"
@@ -124,10 +129,9 @@ cat << EOF
 2. Restart your shell:
    exec zsh
 
-3. Configure Powerlevel10k (will start automatically, or run):
+3. Configure Powerlevel10k:
    p10k configure
 
-4. Launch Kitty:
-   - On macOS: open -a Kitty   or   kitty
-   - On Linux: ~/.local/kitty.app/bin/kitty
-EOFOFOF
+4. Test Neovim:
+   nvim --version
+EOFOFOFOF
