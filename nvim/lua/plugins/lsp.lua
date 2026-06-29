@@ -9,7 +9,7 @@ return {
           root_dir = function(fname)
             local util = require("lspconfig.util")
             return util.root_pattern("pyrightconfig.json", "pyproject.toml", ".git")(fname) 
-                   or util.fs.dirname(fname)
+                   or vim.fn.fnamemodify(fname, ":p:h")
           end,
           settings = {
             basedpyright = {
