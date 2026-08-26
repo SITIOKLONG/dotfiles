@@ -23,12 +23,4 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
   },
-
-  -- Ensure LazyVim knows to use this as the main colorscheme
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
-  },
 }
