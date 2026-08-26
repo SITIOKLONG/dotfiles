@@ -35,20 +35,24 @@ run '~/.tmux/plugins/tpm/tpm'
 conda init
 conda deactivate
 
-pip3 install --user ranger-fm
+# pip3 install --user ranger-fm
 
-FONT_DIR="$HOEM/Library/Fonts"
-mkdir -p "$FONT_DIR"
-if [ ! -f "$FONT_DIR/0xProto.zip" ]; then
-    log "下載並安裝 0xProto Nerd Font..."
-    wget -O "$FONT_DIR/0xProto.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/0xProto.zip
-    unzip -o "$FONT_DIR/0xProto.zip" -d "$FONT_DIR"
-    # 清理 zip（可選）
-    # rm "$FONT_DIR/0xProto.zip"
-else
-    log "0xProto 字體已存在，跳過安裝"
-fi
+# yazi
+brew install yazi poppler ffmpeg
 
+# TODO: change to use jetsbrain
+# FONT_DIR="$HOEM/Library/Fonts"
+# mkdir -p "$FONT_DIR"
+# if [ ! -f "$FONT_DIR/0xProto.zip" ]; then
+#     log "下載並安裝 0xProto Nerd Font..."
+#     wget -O "$FONT_DIR/0xProto.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/0xProto.zip
+#     unzip -o "$FONT_DIR/0xProto.zip" -d "$FONT_DIR"
+#     # 清理 zip（可選）
+#     # rm "$FONT_DIR/0xProto.zip"
+# else
+#     log "0xProto 字體已存在，跳過安裝"
+# fi
+#
 NVIM_CONFIG="$HOME/.config/nvim"
 
 git clone https://github.com/LazyVim/starter.git "$NVIM_CONFIG"
@@ -61,4 +65,4 @@ mkdir -p "$HOME/.config"
 ln -sf "$HOME/.dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 ln -sf "$DOTFILES/kitty" "$HOME/.config/kitty"
-ln -sf "$DOTFILES/ranger" "$HOME/.config/ranger"
+# ln -sf "$DOTFILES/ranger" "$HOME/.config/ranger"
