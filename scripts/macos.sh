@@ -35,26 +35,44 @@ run '~/.tmux/plugins/tpm/tpm'
 conda init
 conda deactivate
 
-# pip3 install --user ranger-fm
-
 # yazi
-brew install yazi poppler ffmpeg
+brew update
+brew install yazi ffmpeg-full sevenzip jq poppler fd ripgrep fzf zoxide resvg imagemagick-full font-symbols-only-nerd-font
+brew link ffmpeg-full imagemagick-full -f --overwrite
 
-# TODO: change to use jetsbrain
-# FONT_DIR="$HOEM/Library/Fonts"
-# mkdir -p "$FONT_DIR"
-# if [ ! -f "$FONT_DIR/0xProto.zip" ]; then
-#     log "下載並安裝 0xProto Nerd Font..."
-#     wget -O "$FONT_DIR/0xProto.zip" https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/0xProto.zip
-#     unzip -o "$FONT_DIR/0xProto.zip" -d "$FONT_DIR"
-#     # 清理 zip（可選）
-#     # rm "$FONT_DIR/0xProto.zip"
-# else
-#     log "0xProto 字體已存在，跳過安裝"
-# fi
-#
+# yabai
+brew install koekeishiya/formulae/yabai
+brew install koekeishiya/formulae/skhd
+
+yabai --start-service
+skhd --start-service
+
+# simple-bar
+git clone --depth 1 https://github.com/Jean-Tinland/simple-bar $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
+
+# jankyborder
+brew tap FelixKratz/formulae
+brew install borders
+
+# btop
+brew install btop
+
+FONT_DIR="$HOME/Library/Fonts"
+mkdir -p "$FONT_DIR"
+
+if [ ! -f "$FONT_DIR/JetBrainsMono.zip" ]; then
+    log "Downloading and installing JetBrains Mono Nerd Font..."
+    wget -O "$FONT_DIR/JetBrainsMono.zip" \
+        https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/JetBrainsMono.zip
+    unzip -o "$FONT_DIR/JetBrainsMono.zip" -d "$FONT_DIR"
+    # Optional: remove the zip after extraction
+    # rm "$FONT_DIR/JetBrainsMono.zip"
+else
+    log "JetBrains Mono font already exists, skipping installation"
+fi
+
+# lazyvim
 NVIM_CONFIG="$HOME/.config/nvim"
-
 git clone https://github.com/LazyVim/starter.git "$NVIM_CONFIG"
 
 
@@ -65,4 +83,3 @@ mkdir -p "$HOME/.config"
 ln -sf "$HOME/.dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES/nvim" "$HOME/.config/nvim"
 ln -sf "$DOTFILES/kitty" "$HOME/.config/kitty"
-# ln -sf "$DOTFILES/ranger" "$HOME/.config/ranger"
