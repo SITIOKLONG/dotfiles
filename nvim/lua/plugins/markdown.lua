@@ -35,6 +35,13 @@ return {
   -- cd ~/.local/share/nvim/lazy/markdown-preview.nvim
   -- npm install
   {
+      "OXY2DEV/markview.nvim",
+      lazy = false,
+
+      -- Completion for `blink.cmp`
+      -- dependencies = { "saghen/blink.cmp" },
+  },
+  {
     "bullets-vim/bullets.vim",
     config = function()
       vim.g.bullets_enabled_file_types = { "markdown", "text", "gitcommit", "scratch" }
