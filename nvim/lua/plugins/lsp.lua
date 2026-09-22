@@ -8,8 +8,8 @@ return {
           single_file_support = false,
           root_dir = function(fname)
             local util = require("lspconfig.util")
-            return util.root_pattern("pyrightconfig.json", "pyproject.toml", ".git")(fname) 
-                   or vim.fn.fnamemodify(fname, ":p:h")
+            return util.root_pattern("pyrightconfig.json", "pyproject.toml", ".git")(fname)
+              or vim.fn.fnamemodify(fname, ":p:h")
           end,
           settings = {
             basedpyright = {
@@ -28,7 +28,7 @@ return {
                 pycodestyle = {
                   enabled = true,
                   maxLineLength = 220,
-                  ignore = { 'E501', 'E231' },
+                  ignore = { "E501", "E231" },
                 },
                 -- 建議關閉其餘重複功能，只留 pycodestyle
                 pyflakes = { enabled = false },
@@ -42,11 +42,11 @@ return {
           filetypes = { "matlab" },
           root_dir = require("lspconfig.util").root_pattern(".git", "*.prj", "*.prj2"),
           on_attach = function(client, bufnr)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "MATLAB Help", remap = true})
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "MATLAB Help", remap = true })
           end,
           settings = {
             matlab = {
-              indexWorkspace = true,  -- Start minimal, enable later
+              indexWorkspace = true, -- Start minimal, enable later
               matlabConnectionTiming = "onStart",
               prewarmGraphics = false,
               telemetry = false,
@@ -56,6 +56,7 @@ return {
           init_timeout = 180000,
         },
         -- dartls = {},
+        clangd = {},
       },
     },
   },
