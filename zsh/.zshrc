@@ -156,8 +156,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 TBN_CLI_BIN="/Users/jacksit/Library/Application Support/taobao/cli/bin"
 case ":$PATH:" in *":$TBN_CLI_BIN:"*) ;; *) export PATH="$PATH:$TBN_CLI_BIN" ;; esac
 
-# GNU 
-export PATH="/usr/local/arm-gnu-toolchain-14.2.rel1-darwin-arm64-arm-none-eabi/bin:$PATH"
+# # GNU 
+# export PATH="/usr/local/arm-gnu-toolchain-14.2.rel1-darwin-arm64-arm-none-eabi/bin:$PATH"
 
 # yazi
 export EDITOR="neovide"
@@ -170,3 +170,9 @@ function y() {
 	command rm -f -- "$tmp"
 }
 
+# platformio
+export PATH=$PATH:$HOME/.local/bin
+export PATH=$PATH:$HOME/.platformio/penv/bin
+
+#esp-idf
+source "/Users/jacksit/.espressif/tools/activate_idf_v6.1.sh"
