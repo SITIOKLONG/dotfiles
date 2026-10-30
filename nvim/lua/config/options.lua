@@ -18,7 +18,7 @@ vim.g.neovide_input_ime = true
 vim.g.neovide_hide_mouse_when_typing = true
 
 -- window
-vim.g.neovide_opacity = 0.9
+vim.g.neovide_opacity = 0.4
 vim.g.neovide_normal_opacity = 1.0
 vim.g.neovide_show_border = false
 vim.g.neovide_window_blurred = true
