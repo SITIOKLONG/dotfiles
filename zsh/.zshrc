@@ -136,6 +136,9 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# neovide
+export NEOVIDE_TCP_NODELAY=1
+
 # flutter
 export PATH=$HOME/flutter/bin:$PATH
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
@@ -156,9 +159,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 TBN_CLI_BIN="/Users/jacksit/Library/Application Support/taobao/cli/bin"
 case ":$PATH:" in *":$TBN_CLI_BIN:"*) ;; *) export PATH="$PATH:$TBN_CLI_BIN" ;; esac
 
-# # GNU 
-# export PATH="/usr/local/arm-gnu-toolchain-14.2.rel1-darwin-arm64-arm-none-eabi/bin:$PATH"
-
 # yazi
 export EDITOR="neovide"
 
@@ -175,4 +175,4 @@ export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.platformio/penv/bin
 
 #esp-idf
-source "/Users/jacksit/.espressif/tools/activate_idf_v6.1.sh"
+# source "/Users/jacksit/.espressif/tools/activate_idf_v6.1.sh"
